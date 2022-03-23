@@ -2,7 +2,7 @@
 ; Timer1 starts by an external interrupt
 ;
 ; Created: 23/03/2022 06:45:45
-; Author : Andrés Alippi
+; Author : AndrÃ©s Alippi
 ;
 ; .INCLUDE "tn85def.inc"
 
@@ -20,15 +20,15 @@ MAIN:
 			SBI		DDRB, 1				;PB1 = output			
 			SBI		PORTB, 2			;PB2 pull-up activated
 
-			LDI		R20, 1<<INT0		;enable INT0
+			LDI		R20, 1<<INT0			;enable INT0
 			OUT		GIMSK, R20
-			SEI							;enable interrupts
+			SEI						;enable interrupts
 
 HERE:		
 			IN		R21, TIFR			;load TIFR
-			SBRC	R21, TOV1			;if Timer1 is not overflow skip next instruction
-			RCALL	LED_OFF			
-			RJMP	HERE				
+			SBRC		R21, TOV1			;if Timer1 is not overflow skip next instruction
+			RCALL		LED_OFF			
+			RJMP		HERE				
 
 LED_OFF:	
 			LDI		R21, 0x00
